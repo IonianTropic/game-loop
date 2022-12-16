@@ -14,11 +14,11 @@ fn main() {
     let mut time_of_last_render = std::time::Instant::now();
     let static_render_pause = std::time::Duration::from_millis(1000 / renders_per_second);
     let mut render_pause = static_update_pause;
-    
+
     let event_loop = winit::event_loop::EventLoop::new();
 
     let _window = winit::window::Window::new(&event_loop).unwrap();
-    
+
     event_loop.run(move |event, _, control_flow| {
         match event {
             winit::event::Event::WindowEvent { event, .. } => match event {
@@ -29,7 +29,6 @@ fn main() {
                 _ => (),
             }
             winit::event::Event::MainEventsCleared => {
-                
                 if time_of_last_update.elapsed() >= update_pause {
                     time_of_last_update = std::time::Instant::now();
                     update();
